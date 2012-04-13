@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<title>New Patterns</title>
+<meta charset=UTF-8">
+<meta name="author" content="Theo Armour">
+</head>
+<body>
+<script type='text/javascript'>
+document.body.style.backgroundColor = '#ccc';
+document.body.style.font = '12pt monospace';
+document.body.style.overflow = 'hidden';
+
+var sheet = document.createElement('style');
+document.body.appendChild(sheet);
+sheet.innerHTML = 'h1 {display: inline; margin: 0;}';
+
+var container = document.createElement( 'div' );
+document.body.appendChild( container );
+// container.style.height = '95%';
+container.style.left = '1%';
+container.style.position = 'absolute';
+container.style.top = '0';
+container.style.width = '100%';
+container.innerHTML='<h1>New Patterns </h1>a preliminary mockup / \'wireframe\' / work in progress';
+
+var menu = document.createElement( 'div' );
+document.body.appendChild( menu );
+menu.style.height = '92%';
+menu.style.left = '1%';
+
+menu.style.position = 'absolute';
+menu.style.top = '5%';
+menu.style.width = '20%';
+menu.innerHTML='<iframe src="navigation-new.htm" height="100%" width="100%"></iframe>';
+
+var content= document.createElement( 'div' );
+document.body.appendChild( content );
+content.style.height = '92%';
+content.style.left = '22%';
+content.style.position = 'absolute';
+content.style.top = '5%';
+content.style.width = '75%';
+content.innerHTML='<iframe src="newpat1/newpat1.htm" name="pattern" height="100%" width="100%"></iframe>';
+</script>
+</body>
+</html>
