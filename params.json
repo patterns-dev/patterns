@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"name":"Patterns","body":"### Welcome to Patterns Dev\r\n\r\nThe is a place where patterns are developed.\r\n","tagline":"general area","google":"","note":"Don't delete this file! It's used internally to help with page regeneration."}
+=======
+{"name":"Patterns","body":"### Welcome to Patterns Dev\r\n\r\nThis is a place where patterns are discovered simply by standing on the shoulders of giants.\r\n\r\nPlease see: http://patterns-dev.github.com/patterns/newpat/\r\n","tagline":"Looking around for the good, big shoulders to stand on...","google":"","note":"Don't delete this file! It's used internally to help with page regeneration."}
+>>>>>>> cf878f412f05357f105884010799253a03b7133e
