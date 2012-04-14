@@ -1,8 +1,11 @@
 <?php
 
 function doIt() {
-	global $basepath;
-	$source = file('../sources/navigation-no-cats.htm');
+	// global $basepath;
+	// $source = file('../sources/navigation-no-cats.htm');
+	$header = file_get_contents('header.htm');
+
+	
 	$patternNames = file('../sources/pattern-names.txt');
 	
 	for ($i = 1; $i < count($patternNames); $i++) {
@@ -69,15 +72,12 @@ function doIt() {
 		$page = file_get_contents('../clean2/apl' . $i . '/apl' . $i . '.htm');
 		$pos1 = stripos($page, 'threedots');
 		$subPage = substr($page, 0, $pos1);
-		
 		$j = 1;
 		$k = 0;
 		$links = '';
-
 		while ($j < strlen($subPage) ) {
 			$pos2 = stripos($subPage, '../apl');
 			$pos3 = stripos(substr($subPage, $pos2 + 5), '/apl');
-
 			if ($pos2 === false) {
 				$j = $pos1 + 100;
 				// echo $i, ' finish<br>' . "\n";			
@@ -115,7 +115,6 @@ function doIt() {
 				$j = $pos2;
 				$linkID = substr($subPage, $pos2 + 6, $pos3 - 1);
 				$links .=  '<a href="../newpat' . $linkID . '/newpat'  . $linkID . '.htm">' . $linkID . ' ' . trim($patternNames[$linkID]) . '</a> ';
-				
 				$subPage = substr($subPage, $pos2 + 10);
 			}
 			// echo $i . ' Horizontal links: ' . $pos2  . ' ' . $pos3 . ' ~ ' .$links . "<br>\n";
@@ -130,7 +129,6 @@ function doIt() {
 		
 		$pos1 = strripos($page, 'threedots');
 		$subPage = substr($page, $pos1);
-
 		$j = 1;
 		$k = 0;
 		$links = '';
@@ -146,7 +144,6 @@ function doIt() {
 				$j = $pos2;
 				$linkID = substr($subPage, $pos2 + 6, $pos3 - 1);
 				$links .=  '<a href="../newpat' . $linkID . '/newpat'  . $linkID . '.htm">' . $linkID . ' ' . trim($patternNames[$linkID]) . '</a> ';
-				
 				$subPage = substr($subPage, $pos2 + 10);
 			}
 			// echo $i . ' Down links: ' . $pos2  . ' ' . $pos3 . ' ~ ' .$links . "<br>\n";
@@ -195,7 +192,7 @@ function doIt() {
 		$contents .= '</body>';
 		
 		echo $i . ' ' . $contents . '<br>';	
-		file_put_contents($destination, $contents);
+		file_put_contents($destination, $header . $contents);
 	}
 }
 
