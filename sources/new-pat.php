@@ -5,7 +5,6 @@ function doIt() {
 	$patternNames = file('pattern-names.txt');
 	
 	for ($i = 1; $i < count($patternNames); $i++) {
-	// for ($i = 1; $i < 10; $i++) {
 		$destination = '../newpat/newpat' . $i . '/newpat' . $i . '.htm';
 		
 		$contents = '<div id="content">' . "\n";
@@ -80,7 +79,7 @@ function doIt() {
 			} else { 
 				$j = $pos2;
 				$linkID = substr($subPage, $pos2 + 6, $pos3 - 1);
-				$links .=  '<a href="../newpat' . $linkID . '/newpat'  . $linkID . '.htm">' . $linkID . ' ' . trim($patternNames[$linkID]) . '</a> ';
+				$links .=  '<a href="../newpat' . $linkID . '/newpat'  . $linkID . '.htm#pat' . $linkID . '">' . $linkID . ' ' . trim($patternNames[$linkID]) . '</a> ';
 				$subPage = substr($subPage, $pos2 + 10);
 			}
 			// echo $i . ' Up links: ' . $pos2  . ' ' . $pos3 . ' ~ ' .$links . "<br>\n";
@@ -110,7 +109,7 @@ function doIt() {
 			} else { 
 				$j = $pos2;
 				$linkID = substr($subPage, $pos2 + 6, $pos3 - 1);
-				$links .=  '<a href="../newpat' . $linkID . '/newpat'  . $linkID . '.htm">' . $linkID . ' ' . trim($patternNames[$linkID]) . '</a> ';
+				$links .=  '<a href="../newpat' . $linkID . '/newpat'  . $linkID . '.htm#pat' . $linkID . '">' . $linkID . ' ' . trim($patternNames[$linkID]) . '</a> ';
 				$subPage = substr($subPage, $pos2 + 10);
 			}
 			// echo $i . ' Horizontal links: ' . $pos2  . ' ' . $pos3 . ' ~ ' .$links . "<br>\n";
@@ -139,7 +138,7 @@ function doIt() {
 			} else { 
 				$j = $pos2;
 				$linkID = substr($subPage, $pos2 + 6, $pos3 - 1);
-				$links .=  '<a href="../newpat' . $linkID . '/newpat'  . $linkID . '.htm">' . $linkID . ' ' . trim($patternNames[$linkID]) . '</a> ';
+				$links .=  '<a href="../newpat' . $linkID . '/newpat'  . $linkID . '.htm#pat' . $linkID . '" >' . $linkID . ' ' . trim($patternNames[$linkID]) . '</a> ';
 				$subPage = substr($subPage, $pos2 + 10);
 			}
 			// echo $i . ' Down links: ' . $pos2  . ' ' . $pos3 . ' ~ ' .$links . "<br>\n";
@@ -151,7 +150,6 @@ function doIt() {
 			} 
 		}		
 		$contents .= '<p>Down links: ' . $links . "</p>\n";
-		
 		
 		$contents .= '<p>Link to source: <a href="http://www.patternlanguage.com/apl/apl' . $i .
 		'/apl' . $i . '.htm" target="_blank" > http://www.patternlanguage.com/apl/apl' . $i .
@@ -185,13 +183,15 @@ function doIt() {
 		
 		$contents .= 'Google Image Search: <a href="https://www.google.com/search?q=' . 
 		$searchKeyWords . '&hl=en&tbm=isch" target="_blank">Searching on: ' . $keyWords . '</a><br>' . "\n";
-		$contents .= "</div>\n</body>\n</html>";
+		$contents .= "</div>\n";
+		$contents .= "</body>\n</html>";
 		
 		echo $i . ' ' . $contents . '<br>';	
 		
 		$header = "<!doctype html>\n<html>\n<head>\n";
 		$header .= "<title>Pattern " . $i . ' ~ '. $name . "</title>\n";
-		$header .= "</head>\n<body>\n<script src='../make-menu.js'></script>\n";
+		$header .= "</head>\n";
+		$header .= "<body id='" . $i . "'>\n<script src='../make-menu.js'></script>\n";
 		file_put_contents($destination, $header . $contents);
 	}
 }
