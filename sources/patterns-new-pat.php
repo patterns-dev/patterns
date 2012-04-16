@@ -4,6 +4,25 @@ function doIt() {
 
 	$patternNames = file('pattern-names.txt');
 	
+	//Build image arrays.  Structure: $images[$patnum]['photos'] => array,  $images[$patnum]['diagrams'] => array
+	$images = array();
+	$matches = array();
+	
+	if ($handle = opendir('../newpat/images')) {
+    while (false !== ($entry = readdir($handle))) {
+        if ($entry == "." || $entry == "..") //Skip directories
+        	continue;
+        if (preg_match('/apl(\d*)photo.*/', $entry, $matches))
+        	$images[$matches[1]]['photos'][] = $entry;
+        elseif  (preg_match('/apl(\d*)diagram.*/', $entry, $matches))
+        	$images[$matches[1]]['diagrams'][] = $entry;        	
+        else
+        	echo "No match for $entry"; 
+    }
+    closedir($handle);
+	}
+	// End building image arrays
+	
 	for ($i = 1; $i < count($patternNames); $i++) {
 		$destination = '../newpat/newpat' . $i . '/newpat' . $i . '.htm';
 		
@@ -62,6 +81,14 @@ function doIt() {
 		else { $subCat = "Complete the Building"; }
 		
 		$contents .= '<p>Sub-Category: ' . $subCat . "</p>\n";
+		
+		// Show photos
+		if(array_key_exists('photos', $images[$i]))
+			foreach($images[$i]['photos'] as $img)
+				$contents .= '<a href="../images/' . $img . '"><img style="float:left; margin:15px 15px 0 0;" height="250" src="../images/' . $img . '"/></a>' . "\n";		
+		$contents .= '<div style="clear: both;"></div>' . "\n";
+
+		
 		
 		// opens a cleaned up version of the orginal source. 
 		$page = file_get_contents('../clean2/apl' . $i . '/apl' . $i . '.htm');
@@ -171,6 +198,13 @@ function doIt() {
 		for ($j = 0; $j < 6; $j++) {
 			$contents .= '<p>Summary ' . ($j + 1) . ': ' . $smmryArray[$j] . ".</p>\n";
 		}
+		
+		//Show diagrams
+		if(array_key_exists('diagrams',$images[$i]))
+			foreach($images[$i]['diagrams'] as $img)
+				$contents .= '<a href="../images/' . $img . '"><img style="float:left; margin:15px 15px 0 0;" height="250" src="../images/' . $img . '"/></a>' . "\n";
+		$contents .= '<div style="clear: both;"></div>' . "\n";
+		
 		
 		$smmryKeyWords = $smmryJSON["sm_api_keyword_array"];
 		$keyWords = '';
