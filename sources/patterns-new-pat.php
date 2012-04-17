@@ -109,7 +109,7 @@ for ($i = 1; $i < count($patternNames); $i++) {
 	}
 	
 	//$hLinks
-	unset($hlinks);
+	unset($hLinks);
 	$subPage = substr($page, $pos1 + 10);
 	$pos1 = stripos($subPage, 'threedots');
 	$subPage = substr($subPage, 0, $pos1);
