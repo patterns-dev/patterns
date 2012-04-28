@@ -1,3 +1,6 @@
+
+#Patterns#
+
 Some observations:
 
 What you will see in the code is the current state of a process of discovery.
