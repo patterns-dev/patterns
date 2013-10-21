@@ -1,0 +1,36 @@
+Regions instead of countries
+Regional policies
+Major structures which define the city
+Communities and neighborhoods
+Community networks
+Character of local environments
+Local centers
+Housing
+Work
+Local road and path network
+Public open land
+Local common land
+Transformation of the family
+Transformation of work and learning
+Transformation of local shops and gathering places
+The overall arangement of a group of buildings
+The position of individual buildings
+Entrances, gardens, courtyards, roofs and terraces
+Paths and squares
+Gradients and connection of space
+The most important areas and rooms (in a house)
+elseif ( $i < 153 ) { $subCat = "The most important areas and rooms (in offices, workshops and public buildings)
+elseif ( $i < 159 ) { $subCat = "Outbuildings and access to the street and gardens
+elseif ( $i < 169 ) { $subCat = "Knit the inside of the building to the outside
+elseif ( $i < 179 ) { $subCat = "Arrange the gardens, and the places in the gardens
+elseif ( $i < 190 ) { $subCat = "Inside, attach necessary minor rooms and alcoves
+elseif ( $i < 197 ) { $subCat = "Fine tune the shape and size of rooms and alcoves 
+elseif ( $i < 205 ) { $subCat = "Give the walls some depth
+elseif ( $i < 209 ) { $subCat = "Let the structure grow directly from your plans and your conception of the buildings
+elseif ( $i < 214 ) { $subCat = "Work out the complete structural layout
+Mark the column locations and erect the main frame
+Fix the exact positions for openings and frame them
+Put in the following subsidiary patterns
+Put in the surfaces and indoor details
+Build outdoor details
+Complete the Building
